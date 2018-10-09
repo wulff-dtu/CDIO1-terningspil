@@ -81,13 +81,11 @@ public class Spil {
 
             }
 
+            spiller.harKastet2Seksere = (kastSum == 12);
+
             if (t1Resultat == t2Resultat) {
 
                 System.out.println(spiller.getNavn() + " slog to ens, og får derfor en ekstra tur.");
-
-                if (kastSum == 12) {
-                    spiller.harKastet2Seksere = true;
-                }
 
                 nyTur(spiller);
 
