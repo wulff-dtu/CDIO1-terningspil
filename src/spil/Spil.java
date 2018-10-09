@@ -4,8 +4,7 @@ public class Spil {
 
     private Spiller spiller1;
     private Spiller spiller2;
-    private Terning terning1 = new Terning();
-    private Terning terning2 = new Terning();
+    private Terninger terninger = new Terninger();
     private boolean spilIgang;
 
     public Spil() {}
@@ -44,35 +43,38 @@ public class Spil {
 
     private void kastTerningerne(Spiller spiller) {
 
-        int t1Resultat = terning1.slaaTerning();
-        int t2Resultat = terning2.slaaTerning();
-        int kastSum = t1Resultat + t2Resultat;
+        terninger.slaaTerninger();
 
-        System.out.println(spiller.getNavn() + " slog en " + t1Resultat + "'er og en " + t2Resultat + "'er.");
+        int t1Vaerdi = terninger.getT1Vaerdi();
+        int t2Vaerdi = terninger.getT2Vaerdi();
+        int sum = terninger.getSum();
+        boolean erEns = terninger.erEns();
 
-        if ((kastSum == 12) && spiller.harKastet2Seksere) {
+        System.out.println(spiller.getNavn() + " slog en " + t1Vaerdi + "'er og en " + t2Vaerdi + "'er.");
+
+        if ((sum == 12) && spiller.harKastet2Seksere) {
 
             stopSpil();
             System.out.println(spiller.getNavn() + " har vundet spillet!");
 
-        } else if ((t1Resultat == 1) && (t2Resultat == 1)) {
+        } else if ((t1Vaerdi == 1) && (t2Vaerdi == 1)) {
 
             spiller.setPoint(0);
             System.out.println(spiller.getNavn() + " mistede alle sine point!");
             spiller.harPasseret40Point = false;
             spiller.harKastet2Seksere = false;
 
-        } else if ((spiller.getPoint() >= 40) && t1Resultat == t2Resultat) {
+        } else if ((spiller.getPoint() >= 40) && erEns) {
 
             stopSpil();
             System.out.println(spiller.getNavn() + " har vundet spillet!");
 
         } else {
 
-            int spillersNyePoint = spiller.getPoint() + kastSum;
+            int spillersNyePoint = spiller.getPoint() + sum;
             spiller.setPoint(spillersNyePoint);
 
-            System.out.println(spiller.getNavn() + " fik " + kastSum + " point og har nu i alt " + spiller.getPoint() + " point!");
+            System.out.println(spiller.getNavn() + " fik " + sum + " point og har nu i alt " + spiller.getPoint() + " point!");
 
             if (spiller.getPoint() >= 40 && !spiller.harPasseret40Point) {
 
@@ -81,9 +83,9 @@ public class Spil {
 
             }
 
-            spiller.harKastet2Seksere = (kastSum == 12);
+            spiller.harKastet2Seksere = (sum == 12);
 
-            if (t1Resultat == t2Resultat) {
+            if (erEns) {
 
                 System.out.println(spiller.getNavn() + " slog to ens, og får derfor en ekstra tur.");
 
@@ -105,7 +107,8 @@ public class Spil {
         System.out.print("Indtast navn på spiller 2: ");
         spiller2.setNavn(BrugSpillet.in.next());
 
-        spillerRaekkefoelge = terning1.slaaTerning() > 3;
+        terninger.slaaTerninger();
+        spillerRaekkefoelge = terninger.getT1Vaerdi() > 3;
 
         spilIgang = true;
 

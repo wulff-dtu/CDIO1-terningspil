@@ -49,7 +49,7 @@ public class BrugSpillet {
                 break;
             }
             case 2: {
-                System.out.println("Spillet er et spil mellem to personer. De to spillere skiftes til at slå med to terninger. \n" +
+                System.out.println("Spillet er er mellem to personer. De to spillere skiftes til at slå med to terninger. \n" +
                         "Summen af terningerne lægges til spillerens point. Når en spiller har 40 point eller derover, kan spilleren \n" +
                         "vinde næste gang, han/hun slår to ens. Hvis du slår to 6'ere, får du udover de 12 point en ekstra tur. \n" +
                         "Hvis du slår to 1'ere, mister du alle dine point. En anden måde at vinde på er, hvis du slår to 6'ere \n" +
