@@ -5,7 +5,7 @@ public class BrugSpillet {
 
     public static Scanner in = new Scanner(System.in);
 
-    public static int input(int antalValg) {
+    private static int input(int antalValg) {
 
         int input = 0;
         boolean godkendtInput = false;
@@ -59,10 +59,41 @@ public class BrugSpillet {
             }
             case 3: {
                 System.out.println("Farvel for denne gang!");
+                in.close();
                 break;
             }
         }
+    }
 
+    public static void nyTurMenu(Spiller spiller, Spil spil) {
+
+        System.out.println(spiller.getNavn() + "s tur: Hvad vil du gøre?");
+        System.out.println("1. Kast terningerne.");
+        System.out.println("2. Se stillingen.");
+        System.out.println("3. Giv op.");
+
+        switch (input(3)) {
+            case 1 : {
+                spil.kastTerningerne(spiller);
+                break;
+            }
+            case 2 : {
+                visStillingen(spil);
+                nyTurMenu(spiller, spil);
+                break;
+            }
+            case 3 : {
+                System.out.println(spiller.getNavn() + " gav op! Spillet er slut.");
+                spil.stopSpil();
+                break;
+            }
+        }
+    }
+
+    private static void visStillingen(Spil spil) {
+        System.out.println("Stillingen er:");
+        System.out.println("    " + spil.getSpiller1().getNavn() + ": " + spil.getSpiller1().getPoint() + " point.");
+        System.out.println("    " + spil.getSpiller2().getNavn() + ": " + spil.getSpiller2().getPoint() + " point.");
     }
 
     public static void main(String[] args) {
@@ -70,4 +101,5 @@ public class BrugSpillet {
         visMenu();
 
     }
+
 }

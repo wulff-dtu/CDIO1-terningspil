@@ -9,39 +9,15 @@ public class Spil {
 
     public Spil() {}
 
-    private void nyTur(Spiller spiller) {
-
-        System.out.println(spiller.getNavn() + "s tur: Hvad vil du gøre?");
-        System.out.println("1. Kast terningerne.");
-        System.out.println("2. Se stillingen.");
-        System.out.println("3. Giv op.");
-
-        switch (BrugSpillet.input(3)) {
-            case 1 : {
-                kastTerningerne(spiller);
-                break;
-            }
-            case 2 : {
-                visStillingen();
-                nyTur(spiller);
-                break;
-            }
-            case 3 : {
-                System.out.println(spiller.getNavn() + " gav op! Spillet er slut.");
-                stopSpil();
-                break;
-            }
-        }
-
+    public Spiller getSpiller1() {
+        return spiller1;
     }
 
-    private void visStillingen() {
-        System.out.println("Stillingen er:");
-        System.out.println("    " + spiller1.getNavn() + ": " + spiller1.getPoint() + " point.");
-        System.out.println("    " + spiller2.getNavn() + ": " + spiller2.getPoint() + " point.");
+    public Spiller getSpiller2() {
+        return spiller2;
     }
 
-    private void kastTerningerne(Spiller spiller) {
+    public void kastTerningerne(Spiller spiller) {
 
         terninger.slaaTerninger();
 
@@ -89,7 +65,7 @@ public class Spil {
 
                 System.out.println(spiller.getNavn() + " slog to ens, og får derfor en ekstra tur.");
 
-                nyTur(spiller);
+                BrugSpillet.nyTurMenu(spiller, this);
 
             }
         }
@@ -122,22 +98,22 @@ public class Spil {
 
             if (spillerRaekkefoelge) {
 
-                nyTur(spiller1);
+                BrugSpillet.nyTurMenu(spiller1, this);
                 if (spilIgang) {
-                    nyTur(spiller2);
+                    BrugSpillet.nyTurMenu(spiller2, this);
                 }
 
             } else {
 
-                nyTur(spiller2);
+                BrugSpillet.nyTurMenu(spiller2, this);
                 if (spilIgang) {
-                    nyTur(spiller1);
+                    BrugSpillet.nyTurMenu(spiller1, this);
                 }
             }
         }
     }
 
-    private void stopSpil() {
+    public void stopSpil() {
 
         spilIgang = false;
 
