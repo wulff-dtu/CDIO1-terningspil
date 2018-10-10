@@ -17,7 +17,7 @@ class TerningerTest {
         // Indtast her, hvor mange testkast, du vil teste, samt hvor stor
         // en difference fra den teoretiske sandsynlighed, du vil tillade (i procent).
 
-        int antalTestSlag = 1000;
+        int antalTestKast = 1000;
         double tilladtProcentDifference = 0.02;
 
         //med "f" menes "forekomst af". Med fx "fSummer" menes der "forekomster af summer".
@@ -36,7 +36,7 @@ class TerningerTest {
 
         //Vi kaster terningerne og indsamler data
 
-        for (int i = 0; i < antalTestSlag; i++) {
+        for (int i = 0; i < antalTestKast; i++) {
 
             terninger.slaaTerninger();
             int sum = terninger.getSum();
@@ -48,12 +48,12 @@ class TerningerTest {
 
         // vi regner på data
 
-        fEnsProcent = (double) fEns / antalTestSlag;
+        fEnsProcent = (double) fEns / antalTestKast;
         fEnsProcentDiff = sEns - fEnsProcent;
         gDiffEns = fEnsProcentDiff < tilladtProcentDifference;
 
         for (int i = 0; i < 11; i++) {
-            fSummerProcent[i] = (double) fSummer[i] / antalTestSlag;
+            fSummerProcent[i] = (double) fSummer[i] / antalTestKast;
             fSummerProcentDiff[i] = sSummer[i] - fSummerProcent[i];
             gDiffSummer[i] = Math.abs(fSummerProcentDiff[i]) < tilladtProcentDifference;
         }
@@ -70,7 +70,7 @@ class TerningerTest {
 
         DecimalFormat dc = new DecimalFormat("#.####");
 
-        System.out.println("Udfald af " + antalTestSlag + " testslag:");
+        System.out.println("Udfald af " + antalTestKast + " testkast:");
         String[] dataTyper = {"Sum/ens:", "Forekomster:", "Procentdel", "Teoretisk:", "Difference:", "Godkendt:"};
         System.out.format("%15s%15s%15s%15s%15s%15s\n", dataTyper);
 
