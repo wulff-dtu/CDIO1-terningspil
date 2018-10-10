@@ -5,6 +5,9 @@ public class BrugSpillet {
 
     public static Scanner in = new Scanner(System.in);
 
+    //"input" bruges til at validere næsten alt input fra brugeren (spilleren).
+    // Det eneste sted, vi ikke validerer, er ved indtastning af spillernes navn. Dette bør forbedres.
+
     private static int input(int antalValg) {
 
         int input = 0;
@@ -33,6 +36,8 @@ public class BrugSpillet {
         return input;
 
     }
+
+    //Viser "hovedmenuen", hvor man kan starte et spil, læse reglerne eller afslutte programmet.
 
     private static void visMenu() {
 
@@ -65,6 +70,8 @@ public class BrugSpillet {
         }
     }
 
+    //Viser den menu, der fremkommer i hver tur i et spil.
+
     public static void nyTurMenu(Spiller spiller, Spil spil) {
 
         System.out.println(spiller.getNavn() + "s tur: Hvad vil du gøre?");
@@ -89,6 +96,8 @@ public class BrugSpillet {
             }
         }
     }
+
+    //Viser stillingen i et spil.
 
     private static void visStillingen(Spil spil) {
         System.out.println("Stillingen er:");

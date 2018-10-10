@@ -17,6 +17,8 @@ public class Spil {
         return spiller2;
     }
 
+    //"kastTerningerne" er den primære funktion i spillet, der tager sig af de forskellige udfald, som de to terninger kan give.
+
     public void kastTerningerne(Spiller spiller) {
 
         terninger.slaaTerninger();
@@ -28,11 +30,13 @@ public class Spil {
 
         System.out.println(spiller.getNavn() + " slog en " + t1Vaerdi + "'er og en " + t2Vaerdi + "'er.");
 
+        //Hvis en spiller kastede to 6'ere i sidste tur, og kaster to 6'ere igen.
         if ((sum == 12) && spiller.harKastet2Seksere) {
 
             stopSpil();
             System.out.println(spiller.getNavn() + " har vundet spillet!");
 
+        //Hvis en spiller slår to 1'ere og mister alle sine point.
         } else if ((t1Vaerdi == 1) && (t2Vaerdi == 1)) {
 
             spiller.setPoint(0);
@@ -40,11 +44,13 @@ public class Spil {
             spiller.harPasseret40Point = false;
             spiller.harKastet2Seksere = false;
 
+        //Hvis en spiller har over 40 point og slår to ens.
         } else if ((spiller.getPoint() >= 40) && erEns) {
 
             stopSpil();
             System.out.println(spiller.getNavn() + " har vundet spillet!");
 
+        //Alle andre udfald. Her får spilleren summen af terningerne i point.
         } else {
 
             int spillersNyePoint = spiller.getPoint() + sum;
@@ -52,6 +58,7 @@ public class Spil {
 
             System.out.println(spiller.getNavn() + " fik " + sum + " point og har nu i alt " + spiller.getPoint() + " point!");
 
+            //Registrerer om spilleren netop lige har passeret 40 point.
             if (spiller.getPoint() >= 40 && !spiller.harPasseret40Point) {
 
                 System.out.println(spiller.getNavn() + " har nu 40 eller flere point og kan vinde ved at slå to ens!");
@@ -59,8 +66,10 @@ public class Spil {
 
             }
 
+            //Registrerer om spilleren lige har kastet to 6'ere.
             spiller.harKastet2Seksere = (sum == 12);
 
+            //Hvis spilleren har slået to ens, får han/hun en ny tur.
             if (erEns) {
 
                 System.out.println(spiller.getNavn() + " slog to ens, og får derfor en ekstra tur.");
@@ -71,11 +80,16 @@ public class Spil {
         }
     }
 
+    //Starter et nyt spil
+
     public void startSpil() {
 
         spiller1 = new Spiller();
         spiller2 = new Spiller();
         boolean spillerRaekkefoelge;
+        spilIgang = true;
+
+        //Her beder vi spillerne indtaste deres navne.
 
         System.out.print("Indtast navn på spiller 1: ");
         spiller1.setNavn(BrugSpillet.in.next());
@@ -83,16 +97,18 @@ public class Spil {
         System.out.print("Indtast navn på spiller 2: ");
         spiller2.setNavn(BrugSpillet.in.next());
 
+        //Her slår vi med terningerne og aflæser, om den ene ternings værdi er over 3 (sandsynlighed = 1/2).
+        // Dette bruger vi til at bestemme, hvilken spiller der skal starte.
+
         terninger.slaaTerninger();
         spillerRaekkefoelge = terninger.getT1Vaerdi() > 3;
-
-        spilIgang = true;
-
-        System.out.println("Lad spillet starte!");
-
         String spillerDerStartersNavn = spillerRaekkefoelge ? spiller1.getNavn() : spiller2.getNavn();
 
+        System.out.println("Lad spillet starte!");
         System.out.println(spillerDerStartersNavn + " er valgt tilfældigt til at starte.");
+
+        //Dette styrer spillets gang, som er at de to spiller skiftes til at have en tur.
+        //Der tages her højde for, hvilken spiller der skal starte.
 
         while(spilIgang) {
 
