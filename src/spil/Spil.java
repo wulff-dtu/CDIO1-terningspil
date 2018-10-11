@@ -17,11 +17,35 @@ public class Spil {
         return spiller2;
     }
 
-    //"kastTerningerne" er den primære funktion i spillet, der tager sig af de forskellige udfald, som de to terninger kan give.
+    public void setSpiller1(Spiller spiller1) {
+        this.spiller1 = spiller1;
+    }
 
-    public void kastTerningerne(Spiller spiller) {
+    public void setSpiller2(Spiller spiller2) {
+        this.spiller2 = spiller2;
+    }
+
+    public boolean getSpilIgang() {
+        return spilIgang;
+    }
+
+    public void setSpilIgang(boolean spilIgang) {
+        this.spilIgang = spilIgang;
+    }
+
+    //"kastTerningerne" er den primære funktion i spillet, der tager sig af
+    //de forskellige udfald, som de to terninger kan give.
+    //Parameterne "testTilstand", "t1Test" og "t2Test" bruges, når vi tester spillet.
+
+    public void kastTerningerne(Spiller spiller, Boolean testTilstand, int t1Test, int t2Test) {
 
         terninger.slaaTerninger();
+
+        if (testTilstand) {
+            terninger.setT1Vaerdi(t1Test);
+            terninger.setT2Vaerdi(t2Test);
+            terninger.setSum(t1Test + t2Test);
+        }
 
         int t1Vaerdi = terninger.getT1Vaerdi();
         int t2Vaerdi = terninger.getT2Vaerdi();
@@ -74,8 +98,12 @@ public class Spil {
 
                 System.out.println(spiller.getNavn() + " slog to ens, og får derfor en ekstra tur.");
 
-                BrugSpillet.nyTurMenu(spiller, this);
-
+                if (!testTilstand) {
+                    BrugSpillet.nyTurMenu(spiller, this);
+                } else {
+                    System.out.println("Spilleren fik her en ekstra tur.");
+                    spiller.harFaaetEkstraTur = true;
+                }
             }
         }
     }

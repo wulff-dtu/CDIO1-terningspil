@@ -6,6 +6,7 @@ public class Spiller {
     private int point;
     boolean harPasseret40Point;
     boolean harKastet2Seksere;
+    boolean harFaaetEkstraTur; //Bruges kun til at teste spillet med
 
     public Spiller() {
         point = 0;
@@ -27,6 +28,10 @@ public class Spiller {
 
     public int getPoint() {
         return point;
+    }
+
+    public boolean harFaatEkstraTur() {
+        return harFaaetEkstraTur;
     }
 
 }

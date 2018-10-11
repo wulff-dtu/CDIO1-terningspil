@@ -81,7 +81,7 @@ public class BrugSpillet {
 
         switch (input(3)) {
             case 1 : {
-                spil.kastTerningerne(spiller);
+                spil.kastTerningerne(spiller, false, 0, 0);
                 break;
             }
             case 2 : {

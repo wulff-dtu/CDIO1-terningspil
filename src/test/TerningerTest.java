@@ -16,12 +16,15 @@ class TerningerTest {
 
         // Indtast her, hvor mange testkast, du vil teste, samt hvor stor
         // en difference fra den teoretiske sandsynlighed, du vil tillade (i procent).
+        // Den angivne difference på 2% gør, at testen ofte lykkedes, men nogle gange fejler.
 
         int antalTestKast = 1000;
         double tilladtProcentDifference = 0.02;
 
         //med "f" menes "forekomst af". Med fx "fSummer" menes der "forekomster af summer".
+        //"procent" angiver, at det er en procentdel af antallet af testkast. Med "diff" er der tale om en difference.
         //med "s" menes der "sandsynlighed for". Med fx "sSummer" menes der "teoretisk sandsynlighed for summer".
+        // med "g" menes "godkendt". Fx er "gDiffEns" en boolean der angiver, om differencen er godkendt.
 
         int[] fSummer = new int[11];
         int fEns = 0;
