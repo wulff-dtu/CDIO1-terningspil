@@ -21,11 +21,12 @@ public class Spil {
         this.spiller1 = spiller1;
     }
 
+    //setSpiller2 bruges pt. ikke til noget, men kan evt. bruges til eventuelle nye tests.
     public void setSpiller2(Spiller spiller2) {
         this.spiller2 = spiller2;
     }
 
-    public boolean getSpilIgang() {
+    public boolean erSpilIgang() {
         return spilIgang;
     }
 

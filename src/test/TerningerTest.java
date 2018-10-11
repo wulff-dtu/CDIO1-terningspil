@@ -19,7 +19,7 @@ class TerningerTest {
         // Den angivne difference på 2% gør, at testen ofte lykkedes, men nogle gange fejler.
 
         int antalTestKast = 1000;
-        double tilladtProcentDifference = 0.02;
+        double tilladtDifference = 0.02;
 
         //med "f" menes "forekomst af". Med fx "fSummer" menes der "forekomster af summer".
         //"procent" angiver, at det er en procentdel af antallet af testkast. Med "diff" er der tale om en difference.
@@ -53,12 +53,12 @@ class TerningerTest {
 
         fEnsProcent = (double) fEns / antalTestKast;
         fEnsProcentDiff = sEns - fEnsProcent;
-        gDiffEns = fEnsProcentDiff < tilladtProcentDifference;
+        gDiffEns = fEnsProcentDiff < tilladtDifference;
 
         for (int i = 0; i < 11; i++) {
             fSummerProcent[i] = (double) fSummer[i] / antalTestKast;
             fSummerProcentDiff[i] = sSummer[i] - fSummerProcent[i];
-            gDiffSummer[i] = Math.abs(fSummerProcentDiff[i]) < tilladtProcentDifference;
+            gDiffSummer[i] = Math.abs(fSummerProcentDiff[i]) < tilladtDifference;
         }
 
         //Vi tester om udfaldet kan godkendes
