@@ -84,7 +84,7 @@ public class Spil {
             System.out.println(spiller.getNavn() + " fik " + sum + " point og har nu i alt " + spiller.getPoint() + " point!");
 
             //Registrerer om spilleren netop lige har passeret 40 point.
-            if (spiller.getPoint() >= 40 && !spiller.isHarKastet2Seksere()) {
+            if (spiller.getPoint() >= 40 && !spiller.isHarPasseret40Point()) {
 
                 System.out.println(spiller.getNavn() + " har nu 40 eller flere point og kan vinde ved at slå to ens!");
                 spiller.setHarPasseret40Point(true);
