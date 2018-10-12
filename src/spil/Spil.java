@@ -121,7 +121,7 @@ public class Spil {
         //Her beder vi spillerne indtaste deres navne.
 
         System.out.print("Indtast navn på spiller 1: ");
-        spiller1.setNavn(BrugSpillet.in.next());
+        spiller1.setNavn(BrugSpillet.in.nextLine());
 
         System.out.print("Indtast navn på spiller 2: ");
         spiller2.setNavn(BrugSpillet.in.next());
