@@ -45,7 +45,7 @@ class SpilTest {
 
         /* Test 1 */ assertTrue(koerTestSpil(test1).getSpiller1().getPoint() == 21); //Spiller slår tre kast, der bør give 21 i point i alt.
         /* Test 2 */ assertTrue(koerTestSpil(test2).getSpiller1().getPoint() == 0); //Spiller får nogle point, og mister derefter alle sine point.
-        /* Test 3 */ assertTrue(koerTestSpil(test3).getSpiller1().harFaatEkstraTur()); //Spiller slår to ens og får en ekstra tur.
+        /* Test 3 */ assertTrue(koerTestSpil(test3).getSpiller1().harFaaetEkstraTur()); //Spiller slår to ens og får en ekstra tur.
         /* Test 4 */ assertTrue(!koerTestSpil(test4).erSpilIgang()); //Spiller vinder ved at få over 40 point og slå to éns.
         /* Test 5 */ assertTrue(!koerTestSpil(test5).erSpilIgang()); //Spiller vinder ved at slå to 6'ere i to ture i træk.
         //Eventuelt flere tests..

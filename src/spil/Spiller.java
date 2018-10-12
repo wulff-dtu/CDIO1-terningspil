@@ -4,9 +4,9 @@ public class Spiller {
 
     private String navn;
     private int point;
-    boolean harPasseret40Point;
-    boolean harKastet2Seksere;
-    boolean harFaaetEkstraTur; //Bruges kun til at teste spillet med
+    private boolean harPasseret40Point;
+    private boolean harKastet2Seksere;
+    private boolean harFaaetEkstraTur; //Bruges kun til at teste spillet med
 
     public Spiller() {
         point = 0;
@@ -30,8 +30,27 @@ public class Spiller {
         return point;
     }
 
-    public boolean harFaatEkstraTur() {
+    public boolean harFaaetEkstraTur() {
         return harFaaetEkstraTur;
     }
 
+    public void setHarFaaetEkstraTur(boolean harFaaetEkstraTur) {
+        this.harFaaetEkstraTur = harFaaetEkstraTur;
+    }
+
+    public void setHarKastet2Seksere(boolean harKastet2Seksere) {
+        this.harKastet2Seksere = harKastet2Seksere;
+    }
+
+    public boolean isHarKastet2Seksere() {
+        return harKastet2Seksere;
+    }
+
+    public boolean isHarPasseret40Point() {
+        return harPasseret40Point;
+    }
+
+    public void setHarPasseret40Point(boolean harPasseret40Point) {
+        this.harPasseret40Point = harPasseret40Point;
+    }
 }

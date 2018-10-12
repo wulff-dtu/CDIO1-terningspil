@@ -56,7 +56,7 @@ public class Spil {
         System.out.println(spiller.getNavn() + " slog en " + t1Vaerdi + "'er og en " + t2Vaerdi + "'er.");
 
         //Hvis en spiller kastede to 6'ere i sidste tur, og kaster to 6'ere igen.
-        if ((sum == 12) && spiller.harKastet2Seksere) {
+        if ((sum == 12) && spiller.isHarKastet2Seksere()) {
 
             stopSpil();
             System.out.println(spiller.getNavn() + " har vundet spillet!");
@@ -66,8 +66,8 @@ public class Spil {
 
             spiller.setPoint(0);
             System.out.println(spiller.getNavn() + " mistede alle sine point!");
-            spiller.harPasseret40Point = false;
-            spiller.harKastet2Seksere = false;
+            spiller.setHarPasseret40Point(false);
+            spiller.setHarKastet2Seksere(false);
 
         //Hvis en spiller har over 40 point og slår to ens.
         } else if ((spiller.getPoint() >= 40) && erEns) {
@@ -84,15 +84,15 @@ public class Spil {
             System.out.println(spiller.getNavn() + " fik " + sum + " point og har nu i alt " + spiller.getPoint() + " point!");
 
             //Registrerer om spilleren netop lige har passeret 40 point.
-            if (spiller.getPoint() >= 40 && !spiller.harPasseret40Point) {
+            if (spiller.getPoint() >= 40 && !spiller.isHarKastet2Seksere()) {
 
                 System.out.println(spiller.getNavn() + " har nu 40 eller flere point og kan vinde ved at slå to ens!");
-                spiller.harPasseret40Point = true;
+                spiller.setHarPasseret40Point(true);
 
             }
 
             //Registrerer om spilleren lige har kastet to 6'ere.
-            spiller.harKastet2Seksere = (sum == 12);
+            spiller.setHarKastet2Seksere(sum == 12);
 
             //Hvis spilleren har slået to ens, får han/hun en ny tur.
             if (erEns) {
@@ -103,7 +103,7 @@ public class Spil {
                     BrugSpillet.nyTurMenu(spiller, this);
                 } else {
                     System.out.println("Spilleren fik her en ekstra tur.");
-                    spiller.harFaaetEkstraTur = true;
+                    spiller.setHarFaaetEkstraTur(true);
                 }
             }
         }
